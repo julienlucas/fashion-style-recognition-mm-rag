@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-family: "Unbounded", sans-serif;
+    color: #F5F5F5;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  body {
+    @apply bg-[#0A0A0A] px-4 text-sm;
+    font-family: "Unbounded", sans-serif;
+  }
+  footer {
+    @apply py-24 pb-8;
+  }
+
+  .logo {
+    @apply absolute -top-16 left-0 font-extrabold leading-6 text-xl;
+    font-family: "Unbounded", sans-serif;
+  }
+
+  input {
+    @apply px-5 h-12 flex items-center focus:outline-none justify-center rounded border border-white mr-2.5 rounded-md;
+  }
+
+  input::placeholder {
+    @apply text-white;
+  }
+
+  button {
+    @apply mt-2 w-full bg-black font-medium text-white px-5 h-12 flex items-center justify-center rounded-md border border-transparent cursor-pointer transition-all duration-100 ease-in-out;
+    @apply hover:bg-white hover:text-black border border-white;
+    font-family: "Unbounded", sans-serif;
+  }
+
+  button.secondary {
+    @apply bg-white text-black hover:bg-black hover:text-white;
+  }
+
+  header button {
+    @apply w-fit bg-transparent text-black bg-white hover:text-white hover:bg-black;
+    border: 1px solid white;
+  }
+
+  a {
+    @apply text-slate-400 hover:underline;
+  }
+
+  strong {
+    @apply font-semibold;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold mb-4 leading-tight;
+    font-family: "Unbounded", sans-serif;
+  }
+
+  h1 {
+    @apply text-[42px] md:text-[62px] text-center leading-11 md:leading-18 font-semibold uppercase;
+    font-family: "Unbounded", sans-serif;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold;
+  }
+
+  h3 {
+    @apply mb-2 text-xl font-semibold;
+  }
+
+  ul li {
+    @apply mb-2;
+  }
+}
