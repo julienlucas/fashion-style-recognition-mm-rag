@@ -6,3 +6,4 @@
 **/*.pyc
 **/chroma_db/
 **/app.log
+**/frontend/node_modules/
