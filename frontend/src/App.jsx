@@ -8,53 +8,9 @@ const test6 = '/static/test-6.png'
 const taylor = '/static/tumblr_a69991aebb9f5d5e0e2ea7b11cd92835_af3c364b_540.jpg'
 
 function App() {
-  const [analysis, setAnalysis] = useState(`
-    <div class="mt-10">
-      <h3>Analyse Mode Professionnelle</h3>
-      <h4>Description des Éléments Vestimentaires</h4>
-
-      <p>L'image présente une tenue composée de plusieurs éléments distincts, chacun contribuant à un look sophistiqué et moderne. Voici une analyse détaillée des pièces vestimentaires :</p>
-      <br/>
-      <h3>1. Veste en Tweed :</h3>
-      <ul class="list-disc list-inside">
-        <li><strongCouleur</strong> : Noir et blanc.</li>
-        <li><strong>Motif</strong> : Motif à carreaux, typique du tweed.</li>
-        <li><strong>Matière</strong> : Tweed, un tissu épais et texturé, souvent associé à des vêtements d'extérieur élégants.</li>
-        <li><strong>Coupe</strong> : La veste est oversize, avec des manches larges et une coupe ample, offrant un style décontracté mais chic.</li>
-      </ul>
-      <br/>
-      <h3>2. Robe Noire :</h3>
-      <ul class="list-disc list-inside">
-        <li><strong>Couleur</strong> : Noir.</li>
-        <li><strong>Motif</strong> : Uni.</li>
-        <li><strong>Matière</strong> : Probablement un tissu léger et fluide, comme du satin ou de la soie.</li>
-        <li><strong>Coupe</strong> : La robe est courte, avec une fermeture éclair visible sur le devant, ajoutant une touche de modernité.</li>
-      </ul>
-      <br/>
-      <h3>3. Ceinture à Perles :</h3>
-      <ul class="list-disc list-inside">
-        <li><strong>Couleur</strong> : Blanc.</li>
-        <li><strong>Motif</strong> : Perles.</li>
-        <li><strong>Matière</strong> : Perles, probablement en plastique ou en verre.</li>
-        <li><strong>Coupe</strong> : La ceinture est portée autour de la taille, ajoutant une touche de sophistication et de féminité à la tenue.</li>
-      </ul>
-      <br/>
-      <h3>Articles Similaires :</h3>
-
-      <ul class="list-disc list-inside">
-        <li><strong>Veste en Tweed Masculine Versace</strong> (3 350,00 \$) : <a href="https://go.shopmy.us/p-9556602" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9556602</a></li>
-        <li><strong>Boucles d'Oreilles Chatelaine Heart en Grenat de David Yurman</strong> (800,00 \$) : <a href="https://go.shopmy.us/p-9646501" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9646501</a></li>
-        <li><strong>Corset en Soie Classique de Victoria's Secret</strong> (34,99 \$) : <a href="https://go.shopmy.us/p-9559444" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9559444</a></li>
-        <li><strong>Montre Tambour de Louis Vuitton</strong> (54 000,00 \$) : <a href="https://go.shopmy.us/p-9560887" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9560887</a></li>
-        <li><strong>Bague Héritage en Rubis et Diamant de Retrouvai</strong> (32 970,00 \$) : <a href="https://go.shopmy.us/p-9571612" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9571612</a></li>
-        <li><strong>Bague Ruby Royale en Rubis et Diamant de Effy Jewelry</strong> (3 060,00 \$) : <a href="https://go.shopmy.us/p-9571596" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9571596</a></li>
-        <li><strong>Bague Petite Pavé Pinky de David Yurman</strong> (2 400,00 \$) : <a href="https://go.shopmy.us/p-9646708" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9646708</a></li>
-        <li><strong>Jupe Mini en Tweed de Versace</strong> (1 695,00 \$) : <a href="https://go.shopmy.us/p-9556710" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9556710</a></li>
-        <li><strong>Sac à Main Medusa 95 de Versace</strong> (2 190,00 \$) : <a href="https://go.shopmy.us/p-9557768" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9557768</a></li>
-        <li><strong>Bottes en Cuir Medusa 95 de Versace</strong> (1 990,00 \$) : <a href="https://go.shopmy.us/p-9557768" target="_blank" rel="noopener noreferrer">https://go.shopmy.us/p-9557768</a></li>
-      </ul>
-    </div>
-  `)
+  const test = "### Analyse Mode Professionnelle\n #### Description des Éléments Vestimentaires\n La tenue présentée sur l'image se compose des éléments suivants :\n\n 1. **Robe Noire** :\n\n - **Couleur** : Noire.\n\n - **Matière** : Probablement un tissu léger et fluide, tel que le polyester ou un mélange de fibres synthétiques.\n\n - **Coupe** : Sans manches, avec un décolleté rond et une longueur au-dessus du genou.\n\n 2. **Ceinture** :\n\n - **Couleur** : Noire avec une boucle dorée.\n\n - **Matière** : Cuir ou similicuir.\n\n - **Détails** : Une chaîne dorée est attachée à la ceinture, ajoutant une touche de sophistication.\n\n 3. **Collier** :\n\n - **Couleur** : Doré.\n\n - **Matière** : Métal doré, probablement de l'or ou un alliage doré.\n\n - **Design** : Un pendentif en forme de cercle avec une chaîne assortie.\n\n 4. **Lunettes** :\n\n - **Couleur** : Monture noire. \n\n - **Matière** : Plastique ou acétate.\n\n - **Design** : Monture épaisse et rectangulaire.\n\n 5. **Bague** :\n\n - **Couleur** : Dorée.\n\n - **Matière** : Métal doré, probablement de l'or ou un alliage doré.\n\n - **Design** : Bague fine avec un petit diamant.\n\n #### Analyse des Couleurs et Motifs\n - **Couleurs** : La tenue est dominée par le noir, avec des accents dorés apportés par les accessoires. Cette combinaison de couleurs crée un look élégant et sophistiqué.\n\n - **Motifs** : Aucun motif visible sur la robe ou les accessoires. Le design est minimaliste et épuré.\n #### Analyse des Matières\n - **Robe** :\n Le tissu semble léger et fluide, idéal pour une tenue de soirée ou un événement formel.\n\n - **Ceinture** :\n Le cuir ou similicuir ajoute une touche de luxe et de durabilité.\n\n - **Accessoires** :\n Les éléments dorés en métal apportent une touche de brillance et de sophistication.\n ### Articles Similaires\n Il est important de noter que les articles suivants sont similaires mais pas nécessairement identiques à ceux présentés sur l'image.\n\n - **Lunettes ‘Little Dinger Glasses’ de Chrome Hearts** (1639,00€) : https://go.shopmy.us/p-21755955\n\n - **Ceinture en Cuir ‘Phoenix Leather Belt’ de B Low The Belt** (\$155.00) : https://go.shopmy.us/p-21759996\n\n - **Bague en Or et Diamant ‘Tattoo Gold Diamond Ring’ de Ofira** (\$3,400.00) : https://go.shopmy.us/p-21759988\n\n - **Collier Vintage ‘Vintage 1970s Ancient Bronze Coin Necklace’ de For Future Reference** (\$10,940) : https://go.shopmy.us/p-21760010\n\n Ces articles peuvent être utilisés pour recréer un look similaire tout en offrant des options de personnalisation et de style."
+  const [analysis, setAnalysis] = useState("")
+  const [imageUrl, setImageUrl] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [uploadedImage, setUploadedImage] = useState(null)
   const [isDragOver, setIsDragOver] = useState(false)
@@ -69,6 +25,19 @@ function App() {
     setIsDragOver(false)
   }, [])
 
+  const convertMarkdownToHtml = useCallback((text) => {
+    return text
+      .replace(/#### (.*?)(?=\n|$|####|###)/g, '<h3 class="mt-4 -mb-4">$1</h3>')
+      .replace(/### (.*?)(?=\n|$|####|###)/g, '<h2 class="mt-4 -mb-4">$1</h2>')
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      .replace(/(\d+\. \*\*.*?\*\* :)/g, '<h4>$1</h4>')
+      .replace(/- \*\*(.*?)\*\* : (.*?)(?=\n-|\n\n|$)/g, '<li><strong>$1</strong> : $2</li>')
+      .replace(/(<li>.*?<\/li>)/gs, '<ul class="list-disc list-inside mt-2">$1</ul>')
+      .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:underline">$1</a>')
+      .replace(/\n\n/g, '<br/><br/>')
+      .replace(/\n/g, '<br/>')
+  }, [])
+
   const handleDrop = useCallback((e) => {
     e.preventDefault()
     setIsDragOver(false)
@@ -76,13 +45,11 @@ function App() {
     const files = Array.from(e.dataTransfer.files)
     const imageFile = files.find(file => file.type.startsWith('image/'))
 
-    if (imageFile) {
-      setUploadedImage({
-        file: imageFile,
-        url: URL.createObjectURL(imageFile),
-        name: imageFile.name
-      })
-    }
+    setUploadedImage({
+      file: imageFile,
+      url: URL.createObjectURL(imageFile),
+      name: imageFile.name
+    })
   }, [])
 
   const handleImage = useCallback(async (image) => {
@@ -92,45 +59,24 @@ function App() {
     const name = image.split('/').pop().split('.')[0] + '.png'
 
     // Créer un File object avec un nom approprié
-    const file = new File([blob], name, { type: 'image/png' })
+    const imageFile = new File([blob], name, { type: 'image/png' })
 
-    // Créer l'URL et définir l'image
-    const url = URL.createObjectURL(file)
     setUploadedImage({
-      file,
-      url,
+      file: imageFile,
+      url: URL.createObjectURL(imageFile),
       name
     })
   }, [])
-
-  const test = `
-    ### Analyse Mode Professionnelle #### Description des Éléments Vestimentaires La tenue présentée sur l'image se compose des éléments suivants : 1. **Robe Noire** : - **Couleur** : Noire. - **Matière** : Probablement un tissu léger et fluide, tel que le polyester ou un mélange de fibres synthétiques. - **Coupe** : Sans manches, avec un décolleté rond et une longueur au-dessus du genou. 2. **Ceinture** : - **Couleur** : Noire avec une boucle dorée. - **Matière** : Cuir ou similicuir. - **Détails** : Une chaîne dorée est attachée à la ceinture, ajoutant une touche de sophistication. 3. **Collier** : - **Couleur** : Doré. - **Matière** : Métal doré, probablement de l'or ou un alliage doré. - **Design** : Un pendentif en forme de cercle avec une chaîne assortie. 4. **Lunettes** : - **Couleur** : Monture noire. - **Matière** : Plastique ou acétate. - **Design** : Monture épaisse et rectangulaire. 5. **Bague** : - **Couleur** : Dorée. - **Matière** : Métal doré, probablement de l'or ou un alliage doré. - **Design** : Bague fine avec un petit diamant. #### Analyse des Couleurs et Motifs - **Couleurs** : La tenue est dominée par le noir, avec des accents dorés apportés par les accessoires. Cette combinaison de couleurs crée un look élégant et sophistiqué. - **Motifs** : Aucun motif visible sur la robe ou les accessoires. Le design est minimaliste et épuré. #### Analyse des Matières - **Robe** : Le tissu semble léger et fluide, idéal pour une tenue de soirée ou un événement formel. - **Ceinture** : Le cuir ou similicuir ajoute une touche de luxe et de durabilité. - **Accessoires** : Les éléments dorés en métal apportent une touche de brillance et de sophistication. ### Articles Similaires Il est important de noter que les articles suivants sont similaires mais pas nécessairement identiques à ceux présentés sur l'image. - **Lunettes ‘Little Dinger Glasses’ de Chrome Hearts** (1639,00€) : https://go.shopmy.us/p-21755955 - **Ceinture en Cuir ‘Phoenix Leather Belt’ de B Low The Belt** (\$155.00) : https://go.shopmy.us/p-21759996 - **Bague en Or et Diamant ‘Tattoo Gold Diamond Ring’ de Ofira** (\$3,400.00) : https://go.shopmy.us/p-21759988 - **Collier Vintage ‘Vintage 1970s Ancient Bronze Coin Necklace’ de For Future Reference** (\$10,940) : https://go.shopmy.us/p-21760010 Ces articles peuvent être utilisés pour recréer un look similaire tout en offrant des options de personnalisation et de style.
-  `
-
-  const convertMarkdownToHtml = (text) => {
-    return text
-      .replace(/#### (.*?)(?=\n|$|####|###)/g, '<h3>$1</h3>')
-      .replace(/### (.*?)(?=\n|$|####|###)/g, '<h2>$1</h2>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/(<h[23]>.*?)(?=<h[23]>|$)/g, '$1')
-  }
-
-  console.log(test)
-  console.log(convertMarkdownToHtml(test))
-
-
 
   const handleFileInput = useCallback((e) => {
     const files = Array.from(e.target.files)
     const imageFile = files.find(file => file.type.startsWith('image/'))
 
-    if (imageFile) {
-      setUploadedImage({
-        file: imageFile,
-        url: URL.createObjectURL(imageFile),
-        name: imageFile.name
-      })
-    }
+    setUploadedImage({
+      file: imageFile,
+      url: URL.createObjectURL(imageFile),
+      name: imageFile.name
+    })
   }, [])
 
   const removeImage = useCallback(() => {
@@ -154,7 +100,9 @@ function App() {
       })
 
       const data = await response.json()
-      setAnalysis(data.message)
+
+      setAnalysis(convertMarkdownToHtml(data.message.bot_response))
+      setImageUrl(data.message.closest_image_url)
     } catch (error) {
       setAnalysis(`Erreur: ${error.message}`)
     } finally {
@@ -294,7 +242,7 @@ function App() {
 
       <div className="relative mx-auto max-w-2xl mt-12">
         <h3>Tenue trouvée la plus proche :</h3>
-        <img src={taylor} alt="taylor" className="w-[400px] h-[400px] my-4 rounded-lg object-cover" />
+        {imageUrl && (<img src={imageUrl} alt="taylor" className="w-[400px] h-[400px] my-4 rounded-lg object-cover" />)}
         <div dangerouslySetInnerHTML={{ __html: analysis }} />
       </div>
 

@@ -106,4 +106,7 @@ class StyleFinderApp:
             except:
                 pass
 
-        return process_response(bot_response)
+        return {
+            "bot_response": process_response(bot_response),
+            "closest_image_url": closest_rows.get('Image URL', '')
+        }
