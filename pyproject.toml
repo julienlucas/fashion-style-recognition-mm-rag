@@ -4,9 +4,7 @@ version = "0.1.0"
 description = "IA system to analyze fashion & recommanding clothes"
 authors = ["julienlucas <hello@julienlucas.com>"]
 readme = "README.md"
-packages = [
-    {include = "backend"}
-]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "~3.12.0"
