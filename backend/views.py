@@ -14,20 +14,6 @@ from .app import StyleFinderApp
 def index(request):
     return render(request, 'frontend/dist/index.html')
 
-def load_dataset_from_github():
-    """Télécharge le dataset depuis GitHub"""
-    # Remplace par ton URL GitHub
-    github_url = "https://raw.githubusercontent.com/julienlucas/fashion-style-finder-rag/main/backend/dataset/swift-style-embeddings.pkl"
-
-    try:
-        response = requests.get(github_url)
-        response.raise_for_status()
-        dataset = pickle.loads(response.content)
-        return dataset
-    except Exception as e:
-        print(f"Erreur téléchargement dataset: {e}")
-        raise
-
 @csrf_exempt
 @require_http_methods(["POST"])
 def analyze(request):
@@ -44,10 +30,9 @@ def analyze(request):
 
         # Chemin absolu vers le dataset
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        # dataset_path = os.path.join(current_dir, 'dataset', 'swift-style-embeddings.pkl')
-        dataset = load_dataset_from_github()
+        dataset_path = os.path.join(current_dir, 'dataset', 'swift-style-embeddings.pkl')
 
-        app = StyleFinderApp(dataset)
+        app = StyleFinderApp(dataset_path)
 
         result = app.process_image(pil_image)
         print(result)
