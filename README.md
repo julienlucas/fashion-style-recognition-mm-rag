@@ -1,8 +1,33 @@
-# Fashion Style Finder RAG
+![Fashion Style Analyzer Header](header.png)
 
-AI system to analyze fashion and recommend clothing.
+# Fashion Style Analyzer multimodal RAG
 
-## LangSmith Configuration
+This AI system analyzes outfits and proposes style enhancement in Taylor Swift's fashion.
+
+## How the app works
+- Image encoding: Conversion of fashion images into numerical vectors
+- Similarity search: Search for visually similar items in a database
+- Advanced AI: Generation of detailed fashion element descriptions
+
+The analyzer identifies clothing, fabrics, colors and style details from images. The database includes information about outfits with brands and prices.
+
+## Precision of cloths recognition
+Close to 100%, but not perfect.
+ConvNext to a great job.
+
+### Stack
+- Python 3.12+
+- 💎 ConvNext (2020) deep learning model for clothes recognition
+- 🧠 Pixtral Large (MistralAI) vision model for fashion analysis
+- A dataset of millions of Taylor Swift outfits
+
+## Installation
+```bash
+git clone https://github.com/julienlucas/fashion-style-finder-rag.git
+python3.12 -m venv venv
+source venv/bin/activate
+poetry install
+```
 
 To monitor your application with LangSmith:
 
@@ -15,7 +40,10 @@ To monitor your application with LangSmith:
 # LangSmith Configuration
 LANGSMITH_API_KEY=your_langsmith_api_key_here
 LANGSMITH_PROJECT=fashion_style_analyzer
+```
 
+go to https://console.mistral.ai create your API Key
+```bash
 # Mistral AI Configuration
 MISTRALAI_API_KEY=your_mistral_api_key_here
 ```
