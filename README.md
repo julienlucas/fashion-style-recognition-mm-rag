@@ -29,7 +29,7 @@ source venv/bin/activate
 poetry install
 ```
 
-To monitor your application with LangSmith:
+To monitor your application with LangSmith (if you want):
 
 1. **Create a LangSmith account**: Go to [smith.langchain.com](https://smith.langchain.com)
 
