@@ -9,7 +9,7 @@ pillow==11.3.0
 pydantic==2.11.7
 requests==2.32.4
 scikit-learn==1.7.1
-torch==2.2.2
+torch==2.2.0
 torchvision==0.17.2
 transformers==4.53.3
 django
