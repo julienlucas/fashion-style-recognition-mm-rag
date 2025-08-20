@@ -7,7 +7,7 @@
 @layer base {
   :root {
     font-family: "Unbounded", sans-serif;
-    color: #F5F5F5;
+    color: #0A0A0A;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -17,7 +17,7 @@
 
 @layer components {
   body {
-    @apply bg-[#0A0A0A] px-4 text-sm;
+    @apply bg-[#F5F5F5] px-4 text-sm;
     font-family: "Unbounded", sans-serif;
   }
   footer {
@@ -39,17 +39,17 @@
 
   button {
     @apply mt-2 w-full bg-black font-medium text-white px-5 h-12 flex items-center justify-center rounded-md border border-transparent cursor-pointer transition-all duration-100 ease-in-out;
-    @apply hover:bg-white hover:text-black border border-white;
+    @apply hover:bg-white hover:text-black border border-black;
     font-family: "Unbounded", sans-serif;
   }
 
   button.secondary {
-    @apply bg-white text-black hover:bg-black hover:text-white;
+    @apply bg-transparent border border-black text-black hover:bg-black hover:text-white;
   }
 
   header button {
-    @apply w-fit bg-transparent text-black bg-white hover:text-white hover:bg-black;
-    border: 1px solid white;
+    @apply w-fit bg-black text-white hover:text-black hover:bg-transparent;
+    border: 1px solid black;
   }
 
   a {
@@ -71,7 +71,7 @@
   }
 
   h1 {
-    @apply text-[42px] md:text-[62px] text-center leading-11 md:leading-18 font-semibold uppercase;
+    @apply text-[42px] md:text-[62px] text-center leading-11 md:leading-18 font-bold uppercase;
     font-family: "Unbounded", sans-serif;
   }
 

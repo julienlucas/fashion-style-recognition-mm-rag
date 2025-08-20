@@ -18,9 +18,13 @@ def analyze(request):
     try:
         image_file = request.FILES['image']
 
-        # Convertir en objet PIL Image
+        # Convertir en objet PIL Image et forcer le mode RGB
         image_data = image_file.read()
         pil_image = Image.open(io.BytesIO(image_data))
+
+        # Convertir en RGB si ce n'est pas déjà le cas (gère PNG, JPEG, etc.)
+        if pil_image.mode != 'RGB':
+            pil_image = pil_image.convert('RGB')
 
         # Chemin absolu vers le dataset
         current_dir = os.path.dirname(os.path.abspath(__file__))
@@ -33,4 +37,5 @@ def analyze(request):
         return JsonResponse({"message": result})
 
     except Exception as e:
+        print(f"Erreur lors du traitement de l'image: {e}")
         return JsonResponse({"Erreur": str(e)}, status=500)

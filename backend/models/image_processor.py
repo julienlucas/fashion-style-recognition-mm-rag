@@ -58,12 +58,16 @@ class ImageProcessor:
                 response.raise_for_status()
                 image = Image.open(BytesIO(response.content)).convert("RGB")
             else:
-                # Charge l'image depuis un fichier local
-                image = Image.open(image_input).convert("RGB")
+                # Charge l'image depuis un fichier local ou objet PIL
+                if isinstance(image_input, str):
+                    image = Image.open(image_input).convert("RGB")
+                else:
+                    # Si c'est déjà un objet PIL, s'assurer qu'il est en RGB
+                    image = image_input.convert("RGB") if image_input.mode != "RGB" else image_input
 
             # Convertit l'image en Base64
             buffered = BytesIO()
-            image.save(buffered, format="JPEG")
+            image.save(buffered, format="JPEG", quality=95)
             base64_string = base64.b64encode(buffered.getvalue()).decode("utf-8")
 
             # Prétraitement ConvNeXt
