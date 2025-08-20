@@ -23,11 +23,14 @@ class StyleFinderApp:
             FileNotFoundError: Si le fichier du dataset est introuvable
             ValueError: Si le dataset est vide ou invalide
         """
-        # Charger le dataset
-        if not os.path.exists(dataset_path):
-            raise FileNotFoundError(f"Fichier du dataset introuvable : {dataset_path}")
+        if isinstance(dataset_path, pd.DataFrame):
+            self.data = dataset_path
+        else:
+            # Sinon, charger depuis le fichier
+            if not os.path.exists(dataset_path):
+                raise FileNotFoundError(f"Fichier du dataset introuvable : {dataset_path}")
+            self.data = pd.read_pickle(dataset_path)
 
-        self.data = pd.read_pickle(dataset_path)
         if self.data.empty:
             raise ValueError("Le dataset chargé est vide")
 
