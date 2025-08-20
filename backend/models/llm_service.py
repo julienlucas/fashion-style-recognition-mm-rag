@@ -1,10 +1,22 @@
 import logging
 from mistralai import Mistral
 import backend.models.config as config
+import os
+from dotenv import load_dotenv
+from langsmith import Client
+from langsmith.run_helpers import traceable
 
 # Configuration du logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+# Configuration LangSmith
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_ENDPOINT"] = "https://api.smith.langchain.com"
+os.environ["LANGCHAIN_API_KEY"] = config.LANGSMITH_API_KEY
+os.environ["LANGCHAIN_PROJECT"] = "fashion_style_analyzer"
+
+langsmith_client = Client()
 
 class PixtralVisionService:
     """
@@ -26,6 +38,7 @@ class PixtralVisionService:
         self.max_tokens = max_tokens
         self.top_p = top_p
 
+    @traceable(name="generate_fashion_response", run_type="llm")
     def generate_response(self, encoded_image, prompt):
         """
         Génère une réponse du modèle à partir d'une image et d'un prompt.

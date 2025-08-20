@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 MISTRALAI_API_KEY = os.getenv("MISTRALAI_API_KEY")
+LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")
 
 MODEL_ID = "pixtral-large-latest"
 # MODEL_ID = "pixtral-12b-2409"

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 const test1 = '/static/test-1.png'
 const test2 = '/static/test-2.png'
 const test3 = '/static/test-3.png'
@@ -13,12 +13,33 @@ const test6 = '/static/test-6.png'
 // import test6 from "../../static/test-6.png"
 
 function App() {
-  const test = "### Analyse Mode Professionnelle\n #### Description des Éléments Vestimentaires\n La tenue présentée sur l'image se compose des éléments suivants :\n\n 1. **Robe Noire** :\n\n - **Couleur** : Noire.\n\n - **Matière** : Probablement un tissu léger et fluide, tel que le polyester ou un mélange de fibres synthétiques.\n\n - **Coupe** : Sans manches, avec un décolleté rond et une longueur au-dessus du genou.\n\n 2. **Ceinture** :\n\n - **Couleur** : Noire avec une boucle dorée.\n\n - **Matière** : Cuir ou similicuir.\n\n - **Détails** : Une chaîne dorée est attachée à la ceinture, ajoutant une touche de sophistication.\n\n 3. **Collier** :\n\n - **Couleur** : Doré.\n\n - **Matière** : Métal doré, probablement de l'or ou un alliage doré.\n\n - **Design** : Un pendentif en forme de cercle avec une chaîne assortie.\n\n 4. **Lunettes** :\n\n - **Couleur** : Monture noire. \n\n - **Matière** : Plastique ou acétate.\n\n - **Design** : Monture épaisse et rectangulaire.\n\n 5. **Bague** :\n\n - **Couleur** : Dorée.\n\n - **Matière** : Métal doré, probablement de l'or ou un alliage doré.\n\n - **Design** : Bague fine avec un petit diamant.\n\n #### Analyse des Couleurs et Motifs\n - **Couleurs** : La tenue est dominée par le noir, avec des accents dorés apportés par les accessoires. Cette combinaison de couleurs crée un look élégant et sophistiqué.\n\n - **Motifs** : Aucun motif visible sur la robe ou les accessoires. Le design est minimaliste et épuré.\n #### Analyse des Matières\n - **Robe** :\n Le tissu semble léger et fluide, idéal pour une tenue de soirée ou un événement formel.\n\n - **Ceinture** :\n Le cuir ou similicuir ajoute une touche de luxe et de durabilité.\n\n - **Accessoires** :\n Les éléments dorés en métal apportent une touche de brillance et de sophistication.\n ### Articles Similaires\n Il est important de noter que les articles suivants sont similaires mais pas nécessairement identiques à ceux présentés sur l'image.\n\n - **Lunettes ‘Little Dinger Glasses’ de Chrome Hearts** (1639,00€) : https://go.shopmy.us/p-21755955\n\n - **Ceinture en Cuir ‘Phoenix Leather Belt’ de B Low The Belt** (\$155.00) : https://go.shopmy.us/p-21759996\n\n - **Bague en Or et Diamant ‘Tattoo Gold Diamond Ring’ de Ofira** (\$3,400.00) : https://go.shopmy.us/p-21759988\n\n - **Collier Vintage ‘Vintage 1970s Ancient Bronze Coin Necklace’ de For Future Reference** (\$10,940) : https://go.shopmy.us/p-21760010\n\n Ces articles peuvent être utilisés pour recréer un look similaire tout en offrant des options de personnalisation et de style."
+  // const test = "### Analyse Mode Professionnelle\n #### Description des Éléments Vestimentaires\n La tenue présentée sur l'image se compose des éléments suivants :\n\n 1. **Robe Noire** :\n\n - **Couleur** : Noire.\n\n - **Matière** : Probablement un tissu léger et fluide, tel que le polyester ou un mélange de fibres synthétiques.\n\n - **Coupe** : Sans manches, avec un décolleté rond et une longueur au-dessus du genou.\n\n 2. **Ceinture** :\n\n - **Couleur** : Noire avec une boucle dorée.\n\n - **Matière** : Cuir ou similicuir.\n\n - **Détails** : Une chaîne dorée est attachée à la ceinture, ajoutant une touche de sophistication.\n\n 3. **Collier** :\n\n - **Couleur** : Doré.\n\n - **Matière** : Métal doré, probablement de l'or ou un alliage doré.\n\n - **Design** : Un pendentif en forme de cercle avec une chaîne assortie.\n\n 4. **Lunettes** :\n\n - **Couleur** : Monture noire. \n\n - **Matière** : Plastique ou acétate.\n\n - **Design** : Monture épaisse et rectangulaire.\n\n 5. **Bague** :\n\n - **Couleur** : Dorée.\n\n - **Matière** : Métal doré, probablement de l'or ou un alliage doré.\n\n - **Design** : Bague fine avec un petit diamant.\n\n #### Analyse des Couleurs et Motifs\n - **Couleurs** : La tenue est dominée par le noir, avec des accents dorés apportés par les accessoires. Cette combinaison de couleurs crée un look élégant et sophistiqué.\n\n - **Motifs** : Aucun motif visible sur la robe ou les accessoires. Le design est minimaliste et épuré.\n #### Analyse des Matières\n - **Robe** :\n Le tissu semble léger et fluide, idéal pour une tenue de soirée ou un événement formel.\n\n - **Ceinture** :\n Le cuir ou similicuir ajoute une touche de luxe et de durabilité.\n\n - **Accessoires** :\n Les éléments dorés en métal apportent une touche de brillance et de sophistication.\n ### Articles Similaires\n Il est important de noter que les articles suivants sont similaires mais pas nécessairement identiques à ceux présentés sur l'image.\n\n - **Lunettes 'Little Dinger Glasses' de Chrome Hearts** (1639,00€) : https://go.shopmy.us/p-21755955\n\n - **Ceinture en Cuir 'Phoenix Leather Belt' de B Low The Belt** (\$155.00) : https://go.shopmy.us/p-21759996\n\n - **Bague en Or et Diamant 'Tattoo Gold Diamond Ring' de Ofira** (\$3,400.00) : https://go.shopmy.us/p-21759988\n\n - **Collier Vintage 'Vintage 1970s Ancient Bronze Coin Necklace' de For Future Reference** (\$10,940) : https://go.shopmy.us/p-21760010\n\n Ces articles peuvent être utilisés pour recréer un look similaire tout en offrant des options de personnalisation et de style."
   const [analysis, setAnalysis] = useState("")
   const [imageUrl, setImageUrl] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [uploadedImage, setUploadedImage] = useState(null)
   const [isDragOver, setIsDragOver] = useState(false)
+  const [seconds, setSeconds] = useState(0)
+  const [lastRenderTime, setLastRenderTime] = useState(0)
+
+  // Compteur de secondes quand isLoading est true
+  useEffect(() => {
+    let interval
+    if (isLoading) {
+      interval = setInterval(() => {
+        setSeconds(prev => prev + 0.1)
+      }, 100)
+    } else {
+      if (seconds > 0) {
+        setLastRenderTime(seconds)
+      }
+      setSeconds(0)
+    }
+
+    return () => {
+      if (interval) clearInterval(interval)
+    }
+  }, [isLoading, seconds])
 
   const handleDragOver = useCallback((e) => {
     e.preventDefault()
@@ -88,6 +109,8 @@ function App() {
 
   const analyzeImage = useCallback(async (image) => {
     setIsLoading(true)
+    setAnalysis("")
+    setImageUrl("")
     try {
       const formData = new FormData()
 
@@ -104,7 +127,7 @@ function App() {
       setAnalysis(convertMarkdownToHtml(data.message.bot_response))
       setImageUrl(data.message.closest_image_url)
     } catch (error) {
-      setAnalysis(`Erreur: ${error.message}`)
+      setAnalysis(`Error: ${error.message}`)
     } finally {
       setIsLoading(false)
     }
@@ -135,19 +158,19 @@ function App() {
       </header>
 
       <div className="mx-auto max-w-3xl mt-8">
-        <h2 className="text-center font-medium mb-13">Ce système IA analyse les tenues et propose une augmentation du style façon Taylor Swift.</h2>
+        <h2 className="text-center font-medium mb-13">This AI system analyzes outfits and proposes style enhancement in Taylor Swift's fashion.</h2>
       </div>
 
       <div className="mx-auto max-w-2xl mt-10">
         <div className="border border-black p-4 rounded-lg text-sm">
-          <h4 className="text-sm">À propos de cette application :</h4>
+          <h4 className="text-sm">About this application:</h4>
           <ul className="list-disc list-inside text-xs">
-            <li><strong>Encodage d'image</strong> : Conversion des images de mode en vecteurs numériques</li>
-            <li><strong>Recherche de similarité</strong> : Recherche d'articles visuellement similaires dans une base de données</li>
-            <li><strong>IA avancée</strong> : Génération de descriptions détaillées des éléments de mode</li>
+            <li><strong>Image encoding</strong>: Conversion of fashion images into numerical vectors</li>
+            <li><strong>Similarity search</strong>: Search for visually similar items in a database</li>
+            <li><strong>Advanced AI</strong>: Generation of detailed fashion element descriptions</li>
           </ul>
-          <p className="text-xs">L'analyseur identifie les vêtements, tissus, couleurs et détails de style à partir des images.
-          La base de données inclut des informations sur les tenues avec marques et prix.</p>
+          <p className="text-xs">The analyzer identifies clothing, fabrics, colors and style details from images.
+          The database includes information about outfits with brands and prices.</p>
         </div>
       </div>
 
@@ -156,39 +179,50 @@ function App() {
           <div className={`relative mb-16 ${uploadedImage ? 'grayscale' : ''}`}>
             <ImageNumber index={1} />
             <img src={test1} alt="test1" className="w-full h-full min-h-[510px] rounded-lg object-cover" />
-            <button onClick={() => handleImage(test1)}>Sélectionner</button>
+            <button onClick={() => handleImage(test1)}>Select</button>
           </div>
           <div className={`relative mb-16 ${uploadedImage ? 'grayscale' : ''}`}>
             <ImageNumber index={2} />
             <img src={test2} alt="test2" className="w-full h-full min-h-[510px] rounded-lg object-cover" />
-            <button onClick={() => handleImage(test2)}>Sélectionner</button>
+            <button onClick={() => handleImage(test2)}>Select</button>
           </div>
           <div className={`relative mb-16 ${uploadedImage ? 'grayscale' : ''}`}>
             <ImageNumber index={3} />
             <img src={test3} alt="test3" className="w-full h-full min-h-[510px] rounded-lg object-cover" />
-            <button onClick={() => handleImage(test3)}>Sélectionner</button>
+            <button onClick={() => handleImage(test3)}>Select</button>
           </div>
           <div className={`relative mb-16 ${uploadedImage ? 'grayscale' : ''}`}>
             <ImageNumber index={4} />
             <img src={test4} alt="test4" className="w-full h-full min-h-[510px] rounded-lg object-cover" />
-            <button onClick={() => handleImage(test4)}>Sélectionner</button>
+            <button onClick={() => handleImage(test4)}>Select</button>
           </div>
           <div className={`relative mb-16 ${uploadedImage ? 'grayscale' : ''}`}>
             <ImageNumber index={5} />
             <img src={test5} alt="test5" className="w-full h-full min-h-[510px] rounded-lg object-cover" />
-            <button onClick={() => handleImage(test5)}>Sélectionner</button>
+            <button onClick={() => handleImage(test5)}>Select</button>
           </div>
           <div className={`relative mb-16 ${uploadedImage ? 'grayscale' : ''}`}>
             <ImageNumber index={6} />
             <img src={test6} alt="test6" className="w-full h-full min-h-[510px] rounded-lg object-cover" />
-            <button onClick={() => handleImage(test6)}>Sélectionner</button>
+            <button onClick={() => handleImage(test6)}>Select</button>
           </div>
           <div className="relative mb-16">
             {uploadedImage ? (
               <div className="relative w-full h-full">
                 <div className="absolute top-2 right-2 w-6 h-6 bg-black text-white flex items-center justify-center rounded-full text-xs cursor-pointer" onClick={removeImage}>X</div>
                 <img src={uploadedImage.url} alt={uploadedImage.name} className="w-full h-full min-h-[510px] rounded-lg object-cover" />
-                <button className="secondary" onClick={() => analyzeImage(uploadedImage)}>Analyser</button>
+                <button className="secondary" onClick={() => analyzeImage(uploadedImage)}>Analyze</button>
+
+                {isLoading && (
+                  <div className="absolute bottom-4 left-4 flex items-center space-x-2 bg-white/90 px-3 py-2 rounded-lg shadow-lg">
+                    <div className="flex space-x-1">
+                      <div className="animate-bounce h-2 w-2 bg-blue-500 rounded-full" style={{animationDelay: '0ms'}} />
+                      <div className="animate-bounce h-2 w-2 bg-blue-500 rounded-full" style={{animationDelay: '150ms'}} />
+                      <div className="animate-bounce h-2 w-2 bg-blue-500 rounded-full" style={{animationDelay: '300ms'}} />
+                    </div>
+                    <span className="text-sm text-gray-700 font-medium">Analysis in progress... {seconds.toFixed(1)}s</span>
+                  </div>
+                )}
               </div>
             ) : (
               <div className={`w-full h-full min-h-[510px] flex flex-col items-center justify-center border-2 border-dashed rounded-lg p-8 px-2 text-center transition-colors ${
@@ -215,10 +249,10 @@ function App() {
                   />
                 </svg>
                 <div className="font-medium text-black dark:text-white mb-2">
-                  Glissez et déposez votre image ici
+                  Drag and drop your image here
                 </div>
                 <p className="text-gray-500 mb-4">
-                  ou cliquez pour sélectionner votre fichier
+                  or click to select your file
                 </p>
                 <input
                   type="file"
@@ -232,7 +266,7 @@ function App() {
                   htmlFor="file-input"
                   className="inline-flex items-center px-4 py-2 border border-transparent text-xs font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 cursor-pointer"
                 >
-                  Sélectionner une image
+                  Select an image
                 </label>
               </div>
              )}
@@ -241,9 +275,21 @@ function App() {
       </div>
 
       <div className="relative mx-auto max-w-2xl mt-12">
+        {isLoading && (
+          <div className="flex items-center">
+            <span className="text-sm">Analysis in progress... {seconds.toFixed(1)}s</span>
+          </div>
+        )}
+
+        {!isLoading && lastRenderTime > 0 && (
+          <div className="flex items-center">
+            <span className="text-sm">Analysis completed in {lastRenderTime.toFixed(1)}s</span>
+          </div>
+        )}
+
         {imageUrl && (
           <>
-            <h3>Tenue trouvée la plus proche :</h3>
+            <h3>Closest outfit found:</h3>
             <img src={imageUrl} className="w-[400px] h-[400px] my-4 rounded-lg object-cover" />
           </>
         )}
