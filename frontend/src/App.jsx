@@ -53,8 +53,8 @@ function App() {
 
   const convertMarkdownToHtml = useCallback((text) => {
     return text
-      .replace(/#### (.*?)(?=\n|$|####|###)/g, '<h3 class="mt-4 -mb-2">$1</h3>')
-      .replace(/### (.*?)(?=\n|$|####|###)/g, '<h2 class="mt-4 -mb-2">$1</h2>')
+      .replace(/#### (.*?)(?=\n|$|####|###)/g, '<h3>$1</h3>')
+      .replace(/### (.*?)(?=\n|$|####|###)/g, '<h3>$1</h3>')
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/(\d+\. \*\*.*?\*\* :)/g, '<h4>$1</h4>')
       .replace(/- \*\*(.*?)\*\* : (.*?)(?=\n-|\n\n|$)/g, '<li><strong>$1</strong> : $2</li>')

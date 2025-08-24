@@ -22,14 +22,44 @@ ConvNext to a great job.
 - A dataset of millions of Taylor Swift outfits
 
 ## Installation
+
+1. **Clone the project** :
 ```bash
-git clone https://github.com/julienlucas/fashion-style-finder-rag.git
-python3.12 -m venv venv
-source venv/bin/activate
-poetry install
+git clone https://github.com/julienlucas/youtube-ai-video-analyzer
 ```
 
-To monitor your application with LangSmith:
+2. **Install dependencies** :
+```bash
+python3.12 -m venv venv
+source venv/bin/activate
+# Django Backend
+poetry install
+
+# React Frontend
+cd frontend
+pnpm install
+pnpm build
+```
+
+3. **Configuration** :
+Create a `.env` file with your API keys :
+```bash
+OPENAI_API_KEY=your_openai_api_key_here
+YOUTUBE_API_KEY=your_youtube_api_key_here
+```
+
+4. **Launch the application** :
+```bash
+# Django Backend
+python manage.py runserver
+
+# React Frontend
+cd frontend
+pnpm install
+pnpm build
+```
+
+To monitor your application with LangSmith (if you want):
 
 1. **Create a LangSmith account**: Go to [smith.langchain.com](https://smith.langchain.com)
 
