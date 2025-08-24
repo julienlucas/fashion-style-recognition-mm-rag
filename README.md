@@ -1,3 +1,5 @@
+Add a star to the repo to support my work. 🙏
+
 ![Fashion Style Analyzer Header](header.png)
 
 # Fashion Style Analyzer multimodal RAG
