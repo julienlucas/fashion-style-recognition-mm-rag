@@ -50,17 +50,6 @@ OPENAI_API_KEY=your_openai_api_key_here
 YOUTUBE_API_KEY=your_youtube_api_key_here
 ```
 
-4. **Launch the application** :
-```bash
-# Django Backend
-python manage.py runserver
-
-# React Frontend
-cd frontend
-pnpm install
-pnpm build
-```
-
 To monitor your application with LangSmith (if you want):
 
 1. **Create a LangSmith account**: Go to [smith.langchain.com](https://smith.langchain.com)
@@ -82,12 +71,7 @@ go to https://console.mistral.ai create your API Key
 MISTRALAI_API_KEY=your_mistral_api_key_here
 ```
 
-4. **Install dependencies**:
-```bash
-poetry install
-```
-
-5. **Launch the application**:
+4. **Launch the application**:
 ```bash
 python manage.py runserver
 ```
