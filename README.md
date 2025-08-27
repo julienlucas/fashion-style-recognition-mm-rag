@@ -56,7 +56,7 @@ To monitor your application with LangSmith (if you want):
 
 2. **Get your API key**: In your account settings
 
-3. **Create a `.env` file** in the root directory:
+3. **Add your env variables**
 ```bash
 # LangSmith Configuration
 LANGSMITH_API_KEY=your_langsmith_api_key_here
