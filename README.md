@@ -1,8 +1,8 @@
-Add a star to the repo to support my work. 🙏
+If you like my work, add a star. 🙏
 
 ![Fashion Style Analyzer Header](./static/header.png)
 
-# Fashion Style Analyzer multimodal RAG
+# Multimodal RAG for fashion outfit recommandations
 
 This AI system analyzes outfits and proposes style enhancement in Taylor Swift's fashion.
 
@@ -19,9 +19,9 @@ ConvNext to a great job.
 
 ### Stack
 - Python 3.12+
-- 💎 ConvNext (2020) deep learning model for clothes recognition
-- 🧠 Pixtral Large (MistralAI) vision model for fashion analysis
-- A dataset of millions of Taylor Swift outfits
+- 👗 A dataset of 200 of Taylor Swift outfits
+- 💎 ConvNext Tiny deeplearning model (Pruned & Quantized in 8bits) for vectors clothes recognition from the dataset
+- 🧠 Pixtral 12B (from Mistral AI) multimodal text & vision model for stylistic analysis
 
 ## Installation
 
