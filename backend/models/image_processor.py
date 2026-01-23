@@ -33,8 +33,7 @@ class ImageProcessor:
             norm_std (list): Écarts-types de normalisation pour les canaux RGB
         """
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.root_dir = Path(__file__).resolve().parents[2]
-        self.onnx_path = str(self.root_dir / "backend" / "models" / "convnext_tiny.onnx")
+        self.onnx_path = "backend/models/convnext_tiny_pruned_int8.onnx"
         self.use_onnx = bool(config.VISION_USE_ONNX)
         self.onnx_session = None
 

@@ -23,7 +23,7 @@ class PixtralVisionService:
     Fournit des méthodes pour interagir avec le modèle Pixtral LAage.
     """
 
-    def __init__(self, temperature=0.2, top_p=0.6, max_tokens=2000):
+    def __init__(self, temperature=0.2, top_p=0.6, max_tokens=1000):
         """
         Initialise le service avec le modèle et les paramètres spécifiés.
 

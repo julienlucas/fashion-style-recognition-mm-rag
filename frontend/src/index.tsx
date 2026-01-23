@@ -331,9 +331,8 @@ function Index() {
             Le challenge
           </CardTitle>
           <CardTitle variant="h3" className="font-medium">
-            Avoir un système de recommandation MM-RAG de tenues au style
-            similaires à l'image uploadée (sans entraînements de modèl
-            donc)
+            Avoir un système IA d'analyse stylistique + MM-RAG recommandation de tenues au style
+            similaires à l'image uploadée, avec prix et liens
           </CardTitle>
           <ul className="list-disc list-inside mb-4 space-y-4">
             <li>
@@ -365,7 +364,7 @@ function Index() {
                   Analyse stylistique poussé et <span>reconnaissances des matières</span>
                 , des formes des tenues
               </strong>{" "}
-              grâce au modèle Pixtral Large de Mistral AI.
+              grâce au modèle Pixtral 12B de Mistral AI (la version Pixtral Large étant trop gourmande en ressources).
             </li>
             <li>
               <strong>
@@ -376,7 +375,7 @@ function Index() {
             </li>
             <li>
               <strong>
-                📊 <span>la latence est un peu longue c'est un point faible</span>.</strong> D'où la nécéssité d'avoir un GPU NVidia minimal sur l'hébergement final en prod de l'application.
+                📊 <span>Latence correct d'environ 10-15 secondes</span>.</strong> pour la recherche MM-RAG + l'analyse stylistique de Pixtral
               <img
                 src="/static/langsmith.png"
                 alt="LangSmith"
