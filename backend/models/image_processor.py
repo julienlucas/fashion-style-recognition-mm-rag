@@ -2,14 +2,9 @@ import numpy as np
 import requests
 import base64
 import os
-import torch
-import torchvision.transforms as transforms
-from torchvision.models import convnext_tiny, ConvNeXt_Tiny_Weights
-from sklearn.metrics.pairwise import cosine_similarity
 from io import BytesIO
 from PIL import Image
 import onnxruntime as ort
-from pathlib import Path
 from huggingface_hub import hf_hub_download
 from langsmith.run_helpers import traceable, get_current_run_tree
 import backend.models.config as config
@@ -17,6 +12,7 @@ import backend.models.config as config
 class ImageProcessor:
     """
     Gère le traitement d'image, l'encodage et les comparaisons de similarité.
+    Utilise ONNX Runtime uniquement (sans PyTorch) pour réduire l'empreinte mémoire.
     """
 
     def __init__(
@@ -25,34 +21,36 @@ class ImageProcessor:
             norm_std=[0.229, 0.224, 0.225]
         ):
         """
-        Initialise le processeur d'image avec un modèle ConvNeXt-Tiny pré-entraîné.
+        Initialise le processeur d'image avec un modèle ConvNeXt-Tiny ONNX.
 
         Args:
             image_size (tuple): Taille cible pour les images en entrée
             norm_mean (list): Valeurs moyennes de normalisation pour les canaux RGB
             norm_std (list): Écarts-types de normalisation pour les canaux RGB
         """
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.onnx_path = "backend/models/convnext_tiny_pruned_int8.onnx"
-        self.use_onnx = bool(config.VISION_USE_ONNX)
         self.onnx_session = None
+        self.image_size = image_size
+        self.norm_mean = np.array(norm_mean, dtype=np.float32)
+        self.norm_std = np.array(norm_std, dtype=np.float32)
 
-        weights = ConvNeXt_Tiny_Weights.IMAGENET1K_V1
-        self.model = None
-        if not self.use_onnx:
-            self.model = convnext_tiny(weights=weights).to(self.device)
-            self.model.eval()
+        self._ensure_onnx_file()
+        self._warmup_onnx()
 
-        # Pipeline de prétraitement d'image
-        self.preprocess = transforms.Compose([
-            transforms.Resize(image_size),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=norm_mean, std=norm_std),
-        ])
-
-        if self.use_onnx:
-            self._ensure_onnx_file()
-            self._warmup_onnx()
+    def _preprocess_image(self, image: Image.Image) -> np.ndarray:
+        """
+        Prétraitement PIL/numpy équivalent à torchvision.transforms.
+        """
+        # Resize
+        image = image.resize(self.image_size, Image.BILINEAR)
+        # To numpy array et normaliser [0, 255] -> [0, 1]
+        img_array = np.array(image, dtype=np.float32) / 255.0
+        # Normalize avec mean/std ImageNet
+        img_array = (img_array - self.norm_mean) / self.norm_std
+        # HWC -> CHW et ajouter batch dimension
+        img_array = np.transpose(img_array, (2, 0, 1))
+        img_array = np.expand_dims(img_array, axis=0).astype(np.float32)
+        return img_array
 
     def _get_onnx_session(self):
         if self.onnx_session is None:
@@ -119,18 +117,12 @@ class ImageProcessor:
                 elif isinstance(run_tree.metadata, dict):
                     run_tree.metadata.update(new_metadata)
 
-            # Prétraitement ConvNeXt
-            input_tensor = self.preprocess(image).unsqueeze(0)
-            if self.use_onnx:
-                session = self._get_onnx_session()
-                input_name = session.get_inputs()[0].name
-                outputs = session.run(None, {input_name: input_tensor.numpy().astype(np.float32)})
-                feature_vector = np.array(outputs[0]).flatten()
-            else:
-                input_tensor = input_tensor.to(self.device)
-                with torch.no_grad():
-                    features = self.model(input_tensor)
-                feature_vector = features.cpu().numpy().flatten()
+            # Prétraitement et inférence ONNX
+            input_tensor = self._preprocess_image(image)
+            session = self._get_onnx_session()
+            input_name = session.get_inputs()[0].name
+            outputs = session.run(None, {input_name: input_tensor})
+            feature_vector = np.array(outputs[0]).flatten()
 
             return {"base64": base64_string, "vector": feature_vector}
         except Exception as e:
@@ -155,9 +147,13 @@ class ImageProcessor:
             valid_dataset = dataset.dropna(subset=['Embedding'])
             dataset_vectors = np.vstack(valid_dataset['Embedding'].values)
 
-            # Recherche initiale avec ConvNeXt
+            # Recherche initiale avec ConvNeXt (cosine similarity numpy)
             if metric == 'cosine':
-                similarities = cosine_similarity(user_vector.reshape(1, -1), dataset_vectors)
+                # Normaliser les vecteurs
+                user_norm = user_vector / np.linalg.norm(user_vector)
+                dataset_norms = dataset_vectors / np.linalg.norm(dataset_vectors, axis=1, keepdims=True)
+                # Produit scalaire = cosine similarity pour vecteurs normalisés
+                similarities = np.dot(dataset_norms, user_norm).reshape(1, -1)
                 # Récupérer plus de candidats pour le re-ranking
                 initial_k = min(top_k * 3, len(valid_dataset))
                 top_indices = np.argsort(similarities[0])[-initial_k:][::-1]
