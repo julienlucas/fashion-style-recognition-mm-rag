@@ -142,10 +142,11 @@ function Index() {
       const imageFile = image.file
       formData.append('image', imageFile)
 
-      const response = await fetch('/analyze', {
-        method: 'POST',
-        body: formData
-      })
+      const apiUrl = import.meta.env.VITE_RAILWAY_API_URL || "";
+      const response = await fetch(`${apiUrl}/analyze`, {
+        method: "POST",
+        body: formData,
+      });
 
       const data = await response.json().catch(() => ({}))
       if (!response.ok) {

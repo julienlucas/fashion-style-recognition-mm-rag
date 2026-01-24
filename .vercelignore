@@ -1,0 +1,15 @@
+# Backend Python (deployed on Railway)
+*.py
+pyproject.toml
+uv.lock
+models/
+manage.py
+Dockerfile
+railway.toml
+
+# Environments
+.venv/
+**/.venv/
+
+# Git
+.git/
